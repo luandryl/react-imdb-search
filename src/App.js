@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Divider, Form, Button } from 'semantic-ui-react'
+import { Container, Header, Divider, Form, Button} from 'semantic-ui-react'
 import Movies from './components/movies/Movies'
 import './home.css'
 
@@ -10,16 +10,17 @@ class App extends Component {
     this.state = {
       movieSearch: '',
       movies: [],
-      isMoviesResults: false
+      isMoviesResults: false,
+      active: false
     }
   }
 
   inputHandler = e => { this.setState({movieSearch: e.target.value}) }
 
   search = () => {
-    if (this.state.movieSearch.length > 0) {
-      this.setState({isMoviesResults: !this.state.isMoviesResults})
-    }
+    this.state.movieSearch.length > 0 
+      ? this.setState({isMoviesResults: !this.state.isMoviesResults})
+      : alert('Type somethig please ...')
   }
 
   closeSearch = () => {this.setState({isMoviesResults: !this.state.isMoviesResults})}
@@ -36,7 +37,7 @@ class App extends Component {
                 <Form.Field>
                   <input value={this.state.movieSearch} onChange={this.inputHandler} placeholder='Type a Movie title' />
                 </Form.Field>
-                <Button primary type='submit' onClick={this.search}>Go Find</Button>
+                <Button secondary type='submit' size='big' onClick={this.search}>Go Find</Button>
               </Form>
             </Container>  
           </div>

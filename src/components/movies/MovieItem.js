@@ -15,15 +15,6 @@ export default class MovieItem extends Component {
               Lançamento {this.props.movie.Year}
             </span>
           </Card.Meta>  
-          <Card.Description>
-            A space time LSD travel
-          </Card.Description>
-        </Card.Content>
-        <Card.Content extra>
-          <a>
-            <Icon name='user' />
-            300mi watches
-          </a>
         </Card.Content>
       </Card>
     );

@@ -16,13 +16,19 @@ export default class Movies extends Component {
   componentWillMount = () => {
     let urlApi = 'http://www.omdbapi.com/?apikey=e75caa77&'
     axios.get(urlApi + 's=' + this.props.searchString)
-      .then(({data}) => this.setState({movies: data.Search}))
+      .then(({data}) => {
+        if (data.Response !== 'False')
+          this.setState({movies: data.Search})
+        else 
+          this.setState({movies: [{Title: 'Film Not Found', Year: '---', Poster: '--'}]})
+      })
   }
 
   render () {
-    let cards = this.state.movies.map((m) => {
-      return <MovieItem movie={m}/>
+    let cards = this.state.movies.map((m, i) => {
+      return <MovieItem key={i} movie={m}/>
     })
+    
     return (
       <div className='movies_wrapper'>
         <div className='close_div'>
