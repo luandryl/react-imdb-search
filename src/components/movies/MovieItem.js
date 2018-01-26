@@ -5,14 +5,14 @@ export default class MovieItem extends Component {
   render () {
     return (
       <Card>
-        <Image src='./avatar.png' />
+        <Image src={this.props.movie.Poster} />
         <Card.Content>
           <Card.Header>
-            2001 - A Space Odyssey
+            {this.props.movie.Title}
           </Card.Header>
           <Card.Meta>
             <span className='date'>
-              Joined in 2015
+              Lançamento {this.props.movie.Year}
             </span>
           </Card.Meta>  
           <Card.Description>
